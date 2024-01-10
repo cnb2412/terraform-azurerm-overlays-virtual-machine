@@ -701,6 +701,12 @@ variable "windows_distribution_list" {
       sku       = "standard"
       version   = "latest"
     }
+    windows-11 = {
+      publisher = "MicrosoftWindowsDesktop"
+      offer     = "windows-11"
+      sku       = "win11-23h2-pron"
+      version   = "latest"
+    }
   }
 }
 
