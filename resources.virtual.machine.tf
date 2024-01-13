@@ -96,6 +96,8 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   encryption_at_host_enabled      = var.enable_encryption_at_host
   proximity_placement_group_id    = var.enable_proximity_placement_group ? azurerm_proximity_placement_group.appgrp.0.id : null
   zone                            = var.vm_availability_zone
+  secure_boot_enabled             = var.enable_secure_boot
+  vtpm_enabled                    = var.enable_vtmp
   tags                            = merge({ "ResourceName" = var.instances_count == 1 ? local.linux_vm_name : format("%s%s", lower(replace(local.linux_vm_name, "/[[:^alnum:]]/", "")), count.index + 1) }, var.add_tags, )
 
   dynamic "admin_ssh_key" {
@@ -180,6 +182,8 @@ resource "azurerm_windows_virtual_machine" "win_vm" {
   patch_mode                   = var.patch_mode
   zone                         = var.vm_availability_zone
   timezone                     = var.vm_time_zone
+  secure_boot_enabled          = var.enable_secure_boot
+  vtpm_enabled                 = var.enable_vtmp
   tags                         = merge({ "ResourceName" = var.instances_count == 1 ? substr(local.windows_vm_name, 0, 15) : substr(format("%s%s", lower(replace(local.windows_vm_name, "/[[:^alnum:]]/", "")), count.index + 1), 0, 15) }, var.add_tags, )
 
   dynamic "source_image_reference" {
