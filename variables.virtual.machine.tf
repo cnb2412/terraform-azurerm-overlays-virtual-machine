@@ -639,6 +639,13 @@ variable "windows_distribution_list" {
       version   = "latest"
     },
 
+    windows2022dc = {
+      publisher = "MicrosoftWindowsServer"
+      offer     = "WindowsServer"
+      sku       = "2022-datacenter"
+      version   = "latest"
+    }
+
     mssql2017exp = {
       publisher = "MicrosoftSQLServer"
       offer     = "SQL2017-WS2019"
@@ -701,10 +708,11 @@ variable "windows_distribution_list" {
       sku       = "standard"
       version   = "latest"
     }
+
     windows-11 = {
       publisher = "MicrosoftWindowsDesktop"
       offer     = "windows-11"
-      sku       = "win11-23h2-pron"
+      sku       = "win11-23h2-pro"
       version   = "latest"
     }
   }
